@@ -165,9 +165,7 @@ function keyPressed(){
       console.log(Ax);
    
   }*/
-  
-  astronauta.move()
-  
+  astronauta.move(niveles [nivelActual])
   
   if(key =='f'){
     cambioArma =!cambioArma;
