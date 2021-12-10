@@ -1,6 +1,3 @@
-
-
-
 let nivel1 = [
   [1,1,1,1,1,1,1,1,1,1,1,1],
   [1,1,1,0,0,0,0,0,0,0,0,1],
@@ -41,48 +38,61 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-/*let nivel1 = [
-  [1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0],
-  [1,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1]
-  ]*/
-let nivelActual=3; 
+let nivelActual=0; 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
-let posIniX =[4,2,3,4];
-let posIniY =[1,0,0,0];
-
-let astronauta = new Astronauta(100,100);
-
+let Ax =0;
+let Ay =0;
+let posIniX =[1,0,0,0];
+let posIniY =[4,2,3,4];
+let astronauta = new Astronauta();
 
 function setup() {
   createCanvas(1200, 700);
-  //backg1 = loadImage("./Images/mapa1.jpeg");
-}
-
-function draw() {
-  background (220);
+  backg1 = loadImage("./Images/mapa1.jpeg");
   switch (nivelActual) {
     case 0:
-    pintarNivel(niveles[0])  
+    Ax=posIniX[0]*100+50;
+    Ay=posIniY[0]*100+50;
     break;
 
     case 1:
-    pintarNivel(niveles[1])  
+    Ax=posIniX[1]*100+50;
+    Ay=posIniY[1]*100+50;
     break;
 
     case 2:
-    pintarNivel(niveles[2])  
+    Ax=posIniX[2]*100+50;
+    Ay=posIniY[2]*100+50;
     break;
 
     case 3:
-    pintarNivel(niveles[3])  
+    Ax=posIniX[3]*100+50;
+    Ay=posIniY[3]*100+50;
     break;
   }
-  astronauta.pintarAstronauta();
+}
+
+function draw() {
+  background (backg1);
+  
+  switch (nivelActual) {
+    case 0:
+    pintarNivel(niveles[0]) 
+    break;
+
+    case 1:
+    pintarNivel(niveles[1])
+    break;
+
+    case 2:
+    pintarNivel(niveles[2]) 
+    break;
+
+    case 3:
+    pintarNivel(niveles[3]) 
+    break;
+  }
+  astronauta.pintarAstronauta(Ax,Ay);
 }
 
 function pintarNivel(nivel){
@@ -96,9 +106,24 @@ function pintarNivel(nivel){
       }
       rect(col*100, fila*100, 100, 100);
       
-    }
-    
+    } 
   }
+}
 
-
+function keyPressed(){
+  switch (key) {
+    case 'a':
+      Ax=Ax-100;
+    break;
+    case 's':
+      Ay=Ay+100;
+    break;
+    case 'w':
+      Ay=Ay-100;
+    break;
+    case 'd':
+      Ax=Ax+100;
+    break;
+  
+  }
 }

@@ -3,10 +3,20 @@ class Astronauta{
         this.x=x;
         this.y=y;
     }
-    pintarAstronauta(){
+    pintarAstronauta(Ax,Ay){
         fill(1);
-        circle(this.x,this.y,70);
+        circle(Ax,Ay,70);
+        this.x=Ax;
+        this.y=Ay;
 
     }
+    getX(){
+        return this.x;
+    }
+
+    getY(){
+        return this.y;
+    }
+    
 
 }
