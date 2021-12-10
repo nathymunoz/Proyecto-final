@@ -7,6 +7,6 @@ class Extintor extends Astronauta{
         circle(x,y,20);
 
     }
-
+   
 
 }

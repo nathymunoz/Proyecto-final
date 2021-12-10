@@ -3,11 +3,18 @@ class Astronauta{
         this.x=x;
         this.y=y;
     }
-    pintarAstronauta(Ax,Ay){
-        fill(1);
+    pintarAstronauta(Ax,Ay,cambiarColor){
+        this.cambiarColor=true
+        if (cambiarColor) {
+            fill(255,0,0);
+        } else if (cambiarColor ==false) {
+            fill (0);
+        }
         circle(Ax,Ay,70);
         this.x=Ax;
         this.y=Ay;
+       
+        
 
     }
     getX(){

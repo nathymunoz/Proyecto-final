@@ -48,6 +48,7 @@ let astronauta = new Astronauta();
 let extintor = new Extintor();
 let Ex =350;
 let Ey =450;
+let cambioArma = true;
 
 function setup() {
   createCanvas(1200, 700);
@@ -95,11 +96,15 @@ function draw() {
     pintarNivel(niveles[3]) 
     break;
   }
-  astronauta.pintarAstronauta(Ax,Ay);
+  astronauta.pintarAstronauta(Ax,Ay,cambioArma);
   
   if(nivelActual == 0){
     extintor.pintarSuelo(Ex,Ey);
   }
+  if (Ax == Ex && Ay == Ey){
+    
+  }
+ 
 }
 
 function pintarNivel(nivel){
@@ -120,7 +125,11 @@ function pintarNivel(nivel){
 function keyPressed(){
   switch (key) {
     case 'a':
-      Ax=Ax-100;
+      Ax=Ax-100; 
+      if (Ax<0) {
+        nivelActual--;
+        Ax =Ax+1200
+      }
     break;
     case 's':
       Ay=Ay+100;
@@ -130,7 +139,22 @@ function keyPressed(){
     break;
     case 'd':
       Ax=Ax+100;
+      if (Ax ==1250 && 'd') {
+        if (nivelActual<3) {
+          nivelActual++;
+          Ax =Ax-1200;
+        } else if (nivelActual == 3 && Ax>1250){
+          Ax =1250;
+        }
+      }
+      console.log(nivelActual);
     break;
-  
+   
+  }
+  if(key =='f'){
+    cambioArma =!cambioArma;
+    console.log(cambioArma);
+  } else {
+
   }
 }
