@@ -44,11 +44,14 @@ let Ax =0;
 let Ay =0;
 let posIniX =[1,0,0,0];
 let posIniY =[4,2,3,4];
-let astronauta = new Astronauta();
+
+let astronauta = new Astronauta(50 + 100 * posIniX[0], 50 + 100 * posIniY[0], posIniY[0], posIniX[0]);
 let extintor = new Extintor();
+
 let Ex =350;
 let Ey =450;
 let cambioArma = true;
+let paraMove = niveles [nivelActual]
 
 
 function setup() {
@@ -125,7 +128,7 @@ function pintarNivel(nivel){
 }
 
 function keyPressed(){
-  let matriz = niveles [nivelActual]
+  /*let matriz = niveles [nivelActual]
   for (let fila = 0; fila < 7; fila++) {
     for (let col = 0; col < 12; col++) {
       if (matriz [fila][col] == 0) {
@@ -161,7 +164,11 @@ function keyPressed(){
       //console.log(nivelActual);
       console.log(Ax);
    
-  }
+  }*/
+  
+  astronauta.move()
+  
+  
   if(key =='f'){
     cambioArma =!cambioArma;
     console.log(cambioArma);
