@@ -10,11 +10,11 @@ let nivel1 = [
 
 let nivel2 = [
   [1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,0,1,0,0,0,1,0,1],
-  [0,0,0,0,0,1,0,1,0,1,0,1],
-  [1,1,1,1,0,1,0,1,0,1,0,0],
-  [1,0,0,0,0,0,0,1,0,1,0,1],
-  [1,0,1,1,1,1,1,1,0,0,0,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,0,0,0,1,0,1],
+  [1,0,0,0,0,1,1,1,0,1,0,0],
+  [1,1,1,1,0,0,0,0,0,1,0,1],
+  [1,0,0,0,0,0,1,0,0,0,0,1],
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
@@ -45,6 +45,9 @@ let Ay =0;
 let posIniX =[1,0,0,0];
 let posIniY =[4,2,3,4];
 let astronauta = new Astronauta();
+let extintor = new Extintor();
+let Ex =350;
+let Ey =450;
 
 function setup() {
   createCanvas(1200, 700);
@@ -93,6 +96,10 @@ function draw() {
     break;
   }
   astronauta.pintarAstronauta(Ax,Ay);
+  
+  if(nivelActual == 0){
+    extintor.pintarSuelo(Ex,Ey);
+  }
 }
 
 function pintarNivel(nivel){
