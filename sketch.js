@@ -50,6 +50,7 @@ let Ex =350;
 let Ey =450;
 let cambioArma = true;
 
+
 function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpeg");
@@ -102,7 +103,8 @@ function draw() {
     extintor.pintarSuelo(Ex,Ey);
   }
   if (Ax == Ex && Ay == Ey){
-    
+
+
   }
  
 }
@@ -123,32 +125,41 @@ function pintarNivel(nivel){
 }
 
 function keyPressed(){
-  switch (key) {
-    case 'a':
-      Ax=Ax-100; 
-      if (Ax<0) {
-        nivelActual--;
-        Ax =Ax+1200
-      }
-    break;
-    case 's':
-      Ay=Ay+100;
-    break;
-    case 'w':
-      Ay=Ay-100;
-    break;
-    case 'd':
-      Ax=Ax+100;
-      if (Ax ==1250 && 'd') {
-        if (nivelActual<3) {
-          nivelActual++;
-          Ax =Ax-1200;
-        } else if (nivelActual == 3 && Ax>1250){
-          Ax =1250;
+  let matriz = niveles [nivelActual]
+  for (let fila = 0; fila < 7; fila++) {
+    for (let col = 0; col < 12; col++) {
+      if (matriz [fila][col] == 0) {
+        
+        switch (key) {
+          case 'a':
+            Ax=Ax-100; 
+            if (Ax<0) {
+              nivelActual--;
+              Ax =Ax+1200
+            }
+          break;
+          case 's':
+            Ay=Ay+100;
+          break;
+          case 'w':
+            Ay=Ay-100;
+          break;
+          case 'd':
+            Ax=Ax+100;
+            if (matriz [fila][12] && 'd') {
+              if (nivelActual<3) {
+                nivelActual++;
+                Ax =Ax-1200;
+              } else if (nivelActual == 3 && Ax>1250){
+                Ax =1250;
+              }
+              break;
+            }
+          }
         }
       }
-      console.log(nivelActual);
-    break;
+      //console.log(nivelActual);
+      console.log(Ax);
    
   }
   if(key =='f'){
