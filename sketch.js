@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=0; 
+let nivelActual=2; 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
 let Ax =0;
 let Ay =0;
@@ -47,9 +47,25 @@ let posIniY =[4,2,3,4];
 let posFinalX =[11,11,11,11];
 let posFinalY =[2,3,4,3,4,5];
 let proyectiles = [];
+let armas = [];
+let posAX = [
+  //arriva
+  [4,7,10], //0
+  [5] //1
+  //abajo
+  [3,6,9], //2
+  [7] //3 
+];
+let posAY = [
+  [0,6]
+];
+let proyectilIMG;
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
 let extintor = new Extintor();
+let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles)
+
+
 
 let Ex =350;
 let Ey =450;
@@ -60,6 +76,8 @@ let paraMove = niveles [nivelActual]
 function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpeg");
+  proyectilIMG = loadImage ("/Images/bala.png");
+  proyectiles.push(new Proyectiles(50 + 100 * 4,50 + 100 * 0, proyectilIMG));
   switch (nivelActual) {
     case 0:
     Ax=posIniX[0]*100+50;
@@ -104,6 +122,9 @@ function draw() {
     pintarNivel(niveles[2]) 
     sigNiv(4,12)
     antNiv(3,-1)
+    armas3Up.show();
+    armas3Up.shootDown();
+    
     break;
 
     case 3:

@@ -1,28 +1,33 @@
 class Armas {
-    constructor(x,y,balas){
+    constructor(x,y,proyectiles){
         this.x = x;
         this.y = y;
-        this.balas=balas;
+        this.proyectiles=proyectiles;
     }
+    
+    show() {
 
+        fill(0);
+        circle(this.x,this.y,25);
+    }
     shootDown() {
         
-        this.balas.push(new BalasAbajo(this.x, this.y, 5))
+        this.proyectiles.push(new BalasAbajo(this.x, this.y, 10))
 
-        for (let i = 0; i < balas.length; i++) {
-            this.balas[i].show()
-            this.balas[i].move()
+        for (let i = 0; i < proyectiles.length; i++) {
+            this.proyectiles[i].show()
+            this.proyectiles[i].move()
         }
         
 
     }
     shootUp() {
         
-        this.balas.push(new BalasArriva(this.x, this.y, 5))
+        this.proyectiles.push(new BalasArriva(this.x, this.y, 5))
 
         for (let i = 0; i < balas.length; i++) {
-            this.balas[i].show()
-            this.balas[i].move()
+            this.proyectiles[i].show()
+            this.proyectiles[i].move()
         }
         
 
