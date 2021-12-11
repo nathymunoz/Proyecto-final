@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=3; 
+let nivelActual=0; 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
 let Ax =0;
 let Ay =0;
@@ -149,6 +149,8 @@ function draw() {
     extintor.pintarSuelo(Ex,Ey);
   }
   
+ astronauta.inventario();
+ console.log(astronauta.inventario());
  
 }
 
@@ -193,11 +195,6 @@ function antNiv(filaAnt,colAnt){
 
 function keyPressed(){
   astronauta.move(niveles [nivelActual])
+  extintor.cambiarAlcanze()
   
-  if(key =='f'){
-    cambioArma =!cambioArma;
-    console.log(cambioArma);
-  } else {
-
-  }
 }
