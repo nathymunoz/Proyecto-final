@@ -75,9 +75,9 @@ let paraMove = niveles [nivelActual]
 
 function setup() {
   createCanvas(1200, 700);
-  backg1 = loadImage("./Images/mapa1.jpeg");
+  backg1 = loadImage("./Images/mapa1.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
-  proyectiles.push(new Proyectiles(50 + 100 * 4,50 + 100 * 0, proyectilIMG));
+  proyectiles.push(new Proyectiles(50 + 100 * 4,50, proyectilIMG));
   switch (nivelActual) {
     case 0:
     Ax=posIniX[0]*100+50;

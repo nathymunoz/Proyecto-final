@@ -15,8 +15,8 @@ class Armas {
         this.proyectiles.push(new BalasAbajo(this.x, this.y, 10))
 
         for (let i = 0; i < proyectiles.length; i++) {
-            this.proyectiles[i].show()
-            this.proyectiles[i].move()
+            this.proyectiles[i].show();
+            this.proyectiles[i].move();
         }
         
 
