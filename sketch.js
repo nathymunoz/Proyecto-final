@@ -88,26 +88,26 @@ function draw() {
   switch (nivelActual) {
     case 0:
     pintarNivel(niveles[0]) 
-    sigNiv(2,11)
+    sigNiv(2,12)
     
     break;
 
     case 1:
     pintarNivel(niveles[1])
-    sigNiv(3,11)
+    sigNiv(3,12)
     antNiv(2,-1)
 
     break;
 
     case 2:
     pintarNivel(niveles[2]) 
-    sigNiv(4,11)
+    sigNiv(4,12)
     antNiv(3,-1)
     break;
 
     case 3:
     pintarNivel(niveles[3]) 
-    sigNiv(4,11)
+    sigNiv(4,12)
     antNiv(4,-1)
     break;
   }
@@ -153,8 +153,8 @@ function sigNiv(filaGana,colGana){
 function antNiv(filaAnt,colAnt){
   if (astronauta.fila==filaAnt && astronauta.col==colAnt) {
     if(nivelActual >1 || nivelActual < 4) {
-      astronauta.x = 50 + 100 * posFinalX[nivelActual - 1]-1;
-      astronauta.col = posFinalX[nivelActual - 1]-1
+      astronauta.x = 50 + 100 * posFinalX[nivelActual - 1];
+      astronauta.col = posFinalX[nivelActual - 1];
       astronauta.y = 50 + 100 * posFinalY[nivelActual - 1]
       astronauta.fila = posFinalY[nivelActual - 1]
     }
