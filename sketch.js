@@ -44,8 +44,8 @@ let Ax =0;
 let Ay =0;
 let posIniX =[1,0,0,0];
 let posIniY =[4,2,3,4];
-let posFinalX =[12,12,12,12];
-let posFinalY =[3,4,5,4,5,6];
+let posFinalX =[11,11,11,11];
+let posFinalY =[2,3,4,3,4,5];
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
 let extintor = new Extintor();
@@ -88,31 +88,24 @@ function draw() {
   switch (nivelActual) {
     case 0:
     pintarNivel(niveles[0]) 
-    //sigNiv(50 + 100 * posFinalX[nivelActual],50 + 100 * posFinalY[nivelActual])
-    //astronauta.fila=posIniX[nivelActual]
-    //astronauta.col=posIniY[nivelActual]
+    sigNiv(2,11)
+    
     break;
 
     case 1:
     pintarNivel(niveles[1])
-    //sigNiv(50 + 100 * posFinalX[nivelActual],50 + 100 * posFinalY[nivelActual])
-    //astronauta.fila=posIniX[nivelActual]
-    //astronauta.col=posIniY[nivelActual]
+    sigNiv(3,11)
 
     break;
 
     case 2:
     pintarNivel(niveles[2]) 
-    //sigNiv(50 + 100 * posFinalX[nivelActual],50 + 100 * posFinalY[nivelActual])
-    //astronauta.fila=posIniX[nivelActual]
-    //astronauta.col=posIniY[nivelActual]
+    sigNiv(4,11)
     break;
 
     case 3:
     pintarNivel(niveles[3]) 
-    //sigNiv(50 + 100 * posFinalX[nivelActual],50 + 100 * posFinalY[nivelActual]||posFinalY[4]||posFinalY[5])
-    //astronauta.fila=posIniX[nivelActual]
-    //astronauta.col=posIniY[nivelActual]
+    sigNiv(4,11)
     break;
   }
   astronauta.pintarAstronauta(Ax,Ay,cambioArma);
@@ -144,7 +137,25 @@ function pintarNivel(nivel){
 
 function sigNiv(filaGana,colGana){
   if (astronauta.fila==filaGana && astronauta.col==colGana) {
+    if(nivelActual < 3) {
+      astronauta.x = 50 + 100 * posIniX[nivelActual + 1]
+      astronauta.col = posIniX[nivelActual + 1]
+      astronauta.y = 50 + 100 * posIniY[nivelActual + 1]
+      astronauta.fila = posIniY[nivelActual + 1]
+    }
     nivelActual++;
+  }
+}
+
+function antNiv(filaAnt,colAnt){
+  if (astronauta.fila==filaAnt && astronauta.col==colAnt) {
+    if(nivelActual >1 || nivelActual < 4) {
+      astronauta.x = 50 + 100 * posFinalX[nivelActual - 1]
+      astronauta.col = posFinalX[nivelActual - 1]
+      astronauta.y = 50 + 100 * posFinalY[nivelActual - 1]
+      astronauta.fila = posFinalY[nivelActual - 1]
+    }
+    nivelActual--;
   }
 }
 
