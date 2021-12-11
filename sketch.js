@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=2; 
+let nivelActual=3; 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
 let Ax =0;
 let Ay =0;
@@ -59,12 +59,16 @@ let posAX = [
 let posAY = [
   [0,6]
 ];
+
 let proyectilIMG;
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
 let extintor = new Extintor();
 let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles)
-
+let engranaje1 = new Tuercas (50 + 100 * 5,50 + 100 * 5)
+let engranaje2 = new Tuercas (50 + 100 * 1,50 + 100 * 5)
+let engranaje3 = new Tuercas (50 + 100 * 4,50 + 100 * 3)
+let engranaje4 = new Tuercas (50 + 100 * 10,50 + 100 * 1)
 
 
 let Ex =350;
@@ -77,7 +81,7 @@ function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
-  proyectiles.push(new Proyectiles(50 + 100 * 4,50, proyectilIMG));
+  
   switch (nivelActual) {
     case 0:
     Ax=posIniX[0]*100+50;
@@ -103,11 +107,14 @@ function setup() {
 
 function draw() {
   background (backg1);
+
+  proyectiles.push(new Proyectiles(50 + 100 * 4,50, proyectilIMG));
   
   switch (nivelActual) {
     case 0:
     pintarNivel(niveles[0]) 
     sigNiv(2,12)
+    engranaje1.show();
     
     break;
 
@@ -115,6 +122,7 @@ function draw() {
     pintarNivel(niveles[1])
     sigNiv(3,12)
     antNiv(2,-1)
+    engranaje2.show();
 
     break;
 
@@ -123,7 +131,8 @@ function draw() {
     sigNiv(4,12)
     antNiv(3,-1)
     armas3Up.show();
-    armas3Up.shootDown();
+    //armas3Up.shootDown();
+    engranaje3.show();
     
     break;
 
@@ -131,6 +140,7 @@ function draw() {
     pintarNivel(niveles[3]) 
     sigNiv(4,12)
     antNiv(4,-1)
+    engranaje4.show();
     break;
   }
   astronauta.pintarAstronauta(Ax,Ay,cambioArma);
@@ -138,10 +148,7 @@ function draw() {
   if(nivelActual == 0){
     extintor.pintarSuelo(Ex,Ey);
   }
-  if (Ax == Ex && Ay == Ey){
-
-
-  }
+  
  
 }
 
