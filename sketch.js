@@ -46,6 +46,7 @@ let posIniX =[1,0,0,0];
 let posIniY =[4,2,3,4];
 let posFinalX =[11,11,11,11];
 let posFinalY =[2,3,4,3,4,5];
+let proyectiles = [];
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
 let extintor = new Extintor();
