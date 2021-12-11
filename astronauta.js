@@ -20,7 +20,7 @@ class Astronauta{
             this.col += 1;
         }
 
-        if((key == 'a' || key == 'A') && nivel[this.fila][this.col + 1] != 1) {
+        if((key == 'a' || key == 'A') && nivel[this.fila][this.col - 1] != 1) {
             this.x -= 100;
             this.col -= 1;
         }
