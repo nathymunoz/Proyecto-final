@@ -42,9 +42,9 @@ let nivelActual=0;
 let niveles = [nivel1, nivel2, nivel3, nivel4];
 let Ax =0;
 let Ay =0;
-let posIniX =[12,12,12,12];
+let posIniX =[1,0,0,0];
 let posIniY =[4,2,3,4];
-let posFinalX =[1,0,0,0];
+let posFinalX =[12,12,12,12];
 let posFinalY =[3,4,5,4,5,6];
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
