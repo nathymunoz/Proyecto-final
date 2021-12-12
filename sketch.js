@@ -176,11 +176,11 @@ function draw() {
     armas2Up.show();
     armas2Up.shootDown(proyectilIMG);
     armas3Down.show();
-    //armas3Down.shootUp(proyectilIMG);
+    armas3Down.shootUp(proyectilIMG);
     armas1Down.show();
-    //armas1Down.shootUp(proyectilIMG);
+    armas1Down.shootUp(proyectilIMG);
     armas2Down.show();
-    //armas2Down.shootUp(proyectilIMG);
+    armas2Down.shootUp(proyectilIMG);
     imageMode(CORNER);
     if (deLlaves[2] == false){
       llave.recogerLlave(1);
@@ -287,7 +287,7 @@ function validarTuerca(tuercaFila,tuercaCol){
   if(astronauta.fila == tuercaFila && astronauta.col == tuercaCol){
     
     tuerca.recogerTuerca(2);
-    cuentaDeTuercas++;
+    cuentaDeTuercas=nivelActual+1;
 
   }
 }

@@ -1,4 +1,4 @@
-class PruebaBalas {
+class BalasArriba {
 
     constructor(x,y,image){
         this.x=x;
@@ -9,9 +9,13 @@ class PruebaBalas {
     show () {
         fill(0);
         image(this.image,this.x,this.y);
-      
+        //ellipse(this.x, this.y, 3, 3);
     }
-    moverse () {
+    moveProyectiles () {
+        this.y-=4.5;
+    }
+
+    moveUp () {
         this.y-=4.5;
     }
 

@@ -4,11 +4,12 @@ class Tuercas {
         this.image=image;
     }
     showTuerca(x,y,image){
-        switch (key) {
+        switch (this.key) {
             case 1:
                 fill(255,0,255)
                 rectMode(CENTER);
-                image(this.image,x,y,75)
+                rect(x,y,75)
+                //image(this.image,x,y);
                 rectMode(CORNER);
             
                 break;
