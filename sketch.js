@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=0; 
+let nivelActual=2; 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
 let Ax =0;
 let Ay =0;
@@ -64,11 +64,13 @@ let proyectilIMG;
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
 let extintor = new Extintor();
-let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles)
-let engranaje1 = new Tuercas (50 + 100 * 5,50 + 100 * 5)
-let engranaje2 = new Tuercas (50 + 100 * 1,50 + 100 * 5)
-let engranaje3 = new Tuercas (50 + 100 * 4,50 + 100 * 3)
-let engranaje4 = new Tuercas (50 + 100 * 10,50 + 100 * 1)
+let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles);
+let engranaje1 = new Tuercas (50 + 100 * 5,50 + 100 * 5);
+let engranaje2 = new Tuercas (50 + 100 * 1,50 + 100 * 5);
+let engranaje3 = new Tuercas (50 + 100 * 4,50 + 100 * 3);
+let engranaje4 = new Tuercas (50 + 100 * 10,50 + 100 * 1);
+let llave = new Llave();
+let deLlaves = [false,false,false,false];
 
 
 let Ex =350;
@@ -115,7 +117,12 @@ function draw() {
     pintarNivel(niveles[0]) 
     sigNiv(2,12)
     engranaje1.show();
+    if (deLlaves[0] == false){
+      llave.recogerLlave(1);
+      llave.showLlave(50 + 100 * 10,50 + 100 * 1);
+    }
     
+    validarLlave(1,10);
     break;
 
     case 1:
@@ -123,6 +130,13 @@ function draw() {
     sigNiv(3,12)
     antNiv(2,-1)
     engranaje2.show();
+    console.log(deLlaves[1])
+    if (deLlaves[1] == false){
+      llave.recogerLlave(1);
+      llave.showLlave(50 + 100 * 10,50 + 100 * 2);
+    }
+    
+    validarLlave(2,10);
 
     break;
 
@@ -131,8 +145,14 @@ function draw() {
     sigNiv(4,12)
     antNiv(3,-1)
     armas3Up.show();
-    //armas3Up.shootDown();
+    armas3Up.shootDown();
     engranaje3.show();
+    if (deLlaves[2] == false){
+      llave.recogerLlave(1);
+      llave.showLlave(50 + 100 * 1,50 + 100 * 5);
+    }
+    
+    validarLlave(5,1);
     
     break;
 
@@ -141,6 +161,12 @@ function draw() {
     sigNiv(4,12)
     antNiv(4,-1)
     engranaje4.show();
+    if (deLlaves[3] == false){
+      llave.recogerLlave(1);
+      llave.showLlave(50 + 100 * 8,50 + 100 * 5);
+    }
+    
+    validarLlave(5,8);
     break;
   }
   astronauta.pintarAstronauta(Ax,Ay,cambioArma);
@@ -149,8 +175,7 @@ function draw() {
     extintor.pintarSuelo(Ex,Ey);
   }
   
- astronauta.inventario();
- console.log(astronauta.inventario());
+ astronauta.addInventario();
  
 }
 
@@ -170,7 +195,7 @@ function pintarNivel(nivel){
 }
 
 function sigNiv(filaGana,colGana){
-  if (astronauta.fila==filaGana && astronauta.col==colGana) {
+  if (astronauta.fila==filaGana && astronauta.col==colGana && deLlaves [nivelActual]) {
     if(nivelActual < 3) {
       astronauta.x = 50 + 100 * posIniX[nivelActual + 1]
       astronauta.col = posIniX[nivelActual + 1]
@@ -178,6 +203,13 @@ function sigNiv(filaGana,colGana){
       astronauta.fila = posIniY[nivelActual + 1]
     }
     nivelActual++;
+
+  } else if (astronauta.fila==filaGana && astronauta.col==colGana){
+      astronauta.x = 50 + 100 * posFinalX[nivelActual]
+      astronauta.col = posFinalX[nivelActual ]
+      astronauta.y = 50 + 100 * posFinalY[nivelActual]
+      astronauta.fila = posFinalY[nivelActual]
+
   }
 }
 
@@ -197,4 +229,12 @@ function keyPressed(){
   astronauta.move(niveles [nivelActual])
   extintor.cambiarAlcanze()
   
+}
+function validarLlave(llaveFila,llaveCol){
+  
+  if(astronauta.fila == llaveFila && astronauta.col == llaveCol){
+    deLlaves[nivelActual] = true;
+    llave.recogerLlave(2);
+
+  }
 }

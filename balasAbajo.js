@@ -9,8 +9,7 @@ class BalasAbajo {
         fill(0);
         ellipse(this.x, this.y, 3, 3);
     }
-
-    move() {
+    moveProyectiles () {
         this.y+=1;
     }
 

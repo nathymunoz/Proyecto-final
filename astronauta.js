@@ -4,7 +4,8 @@ class Astronauta{
         this.y=y;
         this.fila=fila;
         this.col=col;
-        this.inventario =[],[];
+        this.inventario =[];
+        this.card = false;
     }
     pintarAstronauta(cambiarColor){
         this.cambiarColor=true
@@ -36,8 +37,8 @@ class Astronauta{
         }
     }
 
-    inventario(){
-        this.inventario=[0,0,0]
+    addInventario(){
+     this.inventario=[];
 
 
     }
