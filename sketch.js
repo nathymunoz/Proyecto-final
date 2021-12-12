@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=0; 
+let nivelActual=5; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -309,6 +309,14 @@ function draw() {
     enemigo5.show();
 
     break;
+
+    case 5:
+      fill(0,200,0);
+      rect(0,0,1200,700);
+      fill (0);
+      rect(900,500,200,100);
+
+
   }
   astronauta.pintarAstronauta(Ax,Ay);
   
