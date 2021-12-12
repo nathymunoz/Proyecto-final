@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=2; 
+let nivelActual=0; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -87,6 +87,10 @@ let enemigo5 = new Enemigos (1030, 430, 7, 3, nivel4);
 
 let enemigosImg;
 
+//imagenes secundarias
+let luz;
+let luz2;
+
 //imagenes de fondo
 let backg1;
 let backg2;
@@ -96,13 +100,20 @@ let backg4;
 
 function setup() {
   createCanvas(1200, 700);
+  //fondo
   backg1 = new loadImage("./Images/mapa1.jpg");
   backg2 = new loadImage("./Images/mapa2.jpg");
   backg3 = new loadImage("./Images/mapa3.jpg");
   backg4 = new loadImage("./Images/mapa4.jpg");
-  proyectilIMG = loadImage ("/Images/bala.png");
-  tuercaAdentro = loadImage ("/Images/tuercacolect.png")
-  tuercaAfuera = loadImage ("/Images/tuerca.png");
+
+  //imagenes secundarias
+  luz = new loadImage("./Images/luz.png")
+  luz2 = new loadImage("./Images/luz2.png")
+
+
+  proyectilIMG = loadImage ("./Images/bala.png");
+  tuercaAdentro = loadImage ("./Images/tuerca.png")
+  tuercaAfuera = loadImage ("./Images/tuerca.png");
   enemigosIMG = loadImage ("./Images/enemigo1.png");
 
 
@@ -139,10 +150,14 @@ function draw() {
 
     imageMode(CORNER);
         image(backg1, 0, 0, 1200, 700);
+
     
     if (deLlaves[0] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 10,50 + 100 * 1);
+
+      imageMode(CORNER);
+      image(luz, 1000, 100, 100, 100);
 
     }
       
@@ -150,13 +165,19 @@ function draw() {
     if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
       tuerca.showTuerca(50 + 100 * 5,50 + 100 * 5,tuercaAfuera)
-      
+
+      imageMode(CORNER);
+    image(luz, 500, 500, 100, 100);
+
     } else {
       tuerca.recogerTuerca(2);
     }
     validarTuerca(5,5);
     
     validarLlave(1,10);
+
+    imageMode(CORNER);
+    image(luz2, 300, 400, 100, 100);
 
     enemigo1.show();
     //enemigo1.move(mat);
@@ -174,12 +195,22 @@ function draw() {
     if (deLlaves[1] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 10,50 + 100 * 2);
+
+      imageMode(CORNER);
+    image(luz, 1000, 200, 100, 100);
+
     }
     if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
       tuerca.showTuerca(50 + 100 * 1,50 + 100 * 5)
+
+      imageMode(CORNER);
+    image(luz, 100, 500, 100, 100);
+
     }else {
       tuerca.recogerTuerca(2);
+
+
     }
     validarTuerca(5,1);
     
@@ -216,10 +247,18 @@ function draw() {
     if (deLlaves[2] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 1,50 + 100 * 5);
+
+      imageMode(CORNER);
+    image(luz, 100, 500, 100, 100);
+
     }
     if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
       tuerca.showTuerca(50 + 100 * 3,50 + 100 * 3)
+
+      imageMode(CORNER);
+    image(luz, 300, 300, 100, 100);
+
     }else {
       tuerca.recogerTuerca(2);
     }
@@ -242,10 +281,18 @@ function draw() {
     if (deLlaves[3] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 8,50 + 100 * 5);
+
+      imageMode(CORNER);
+    image(luz, 800, 500, 100, 100);
+
     }
     if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
       tuerca.showTuerca(50 + 100 * 10,50 + 100 * 1)
+
+      imageMode(CORNER);
+    image(luz, 1000, 100, 100, 100);
+
     }else {
       tuerca.recogerTuerca(2);
     }
