@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=0; 
+let nivelActual=2; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -87,9 +87,9 @@ function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
-  tuercaAfuera = loadImage ("/Images/tuercacolect.png")
+  tuercaAdentro = loadImage ("/Images/tuercacolect.png")
   tuercaAfuera = loadImage ("/Images/tuerca.png");
-  enemigo1IMG = loadImage ("./Images/enemigo1.png");
+
 
   switch (nivelActual) {
     case 0:
@@ -197,6 +197,8 @@ function draw() {
     validarTuerca(3,3);
     
     validarLlave(5,1);
+
+    validateImpact();
     
     break;
 
@@ -311,7 +313,7 @@ function validarTuerca(tuercaFila,tuercaCol){
 
 function validateImpact(){
   if (dist(astronauta.getX,astronauta.getY,proyectiles.x,proyectiles.y)<35) {
-
+    console.log("hello");
 
   }
 }
