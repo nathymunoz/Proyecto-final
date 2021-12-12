@@ -8,7 +8,7 @@ class Armas {
     show() {
 
         fill(0);
-        circle(this.x,this.y,25);
+        circle(this.x,this.y,0.1);
     }
     shootDown(image) {
         

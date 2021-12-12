@@ -52,6 +52,7 @@ let proyectiles = [];
 let armas = [];
 
 
+//armas
 let proyectilIMG;
 
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
@@ -67,6 +68,7 @@ let armas4Down = new Armas (50 + 100 * 7,50 + 100 * 6,proyectiles);
 let tuerca = new Tuercas();
 let cuentaDeTuercas =0;
 
+//coleccionables
 let llave = new Llave();
 let deLlaves = [false,false,false,false];
 
@@ -76,19 +78,32 @@ let Ey =450;
 let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
-let enemigos = [];
-let enemigo1 = new Enemigo1 (830, 130, 9, 2, nivel1);
-let enemigo1Img;
+//enemigos
+let enemigo1 = new Enemigos (830, 130, 9, 2, nivel1);
+let enemigo2 = new Enemigos (630, 230, 7, 3, nivel2);
+let enemigo3 = new Enemigos (230, 530, 7, 3, nivel2);
+let enemigo4 = new Enemigos (1030, 430, 7, 3, nivel2);
+let enemigo5 = new Enemigos (1030, 430, 7, 3, nivel4);
 
+let enemigosImg;
 
+//imagenes de fondo
+let backg1;
+let backg2;
+let backg3;
+let backg4;
 
 
 function setup() {
   createCanvas(1200, 700);
-  backg1 = loadImage("./Images/mapa1.jpg");
+  backg1 = new loadImage("./Images/mapa1.jpg");
+  backg2 = new loadImage("./Images/mapa2.jpg");
+  backg3 = new loadImage("./Images/mapa3.jpg");
+  backg4 = new loadImage("./Images/mapa4.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
   tuercaAdentro = loadImage ("/Images/tuercacolect.png")
   tuercaAfuera = loadImage ("/Images/tuerca.png");
+  enemigosIMG = loadImage ("./Images/enemigo1.png");
 
 
   switch (nivelActual) {
@@ -121,6 +136,9 @@ function draw() {
     case 0:
     pintarNivel(niveles[0]) 
     sigNiv(2,12)
+
+    imageMode(CORNER);
+        image(backg1, 0, 0, 1200, 700);
     
     if (deLlaves[0] == false){
       llave.recogerLlave(1);
@@ -141,14 +159,17 @@ function draw() {
     validarLlave(1,10);
 
     enemigo1.show();
-    //enemigo1.moveEne(mat);
+    //enemigo1.move(mat);
     break;
 
     case 1:
     pintarNivel(niveles[1])
     sigNiv(3,12)
     antNiv(2,-1)
-    
+
+    imageMode(CORNER);
+        image(backg2, 0, 0, 1200, 700);
+
     
     if (deLlaves[1] == false){
       llave.recogerLlave(1);
@@ -164,19 +185,27 @@ function draw() {
     
     validarLlave(2,10);
 
+    enemigo2.show();
+    enemigo3.show();
+    enemigo4.show();
+
     break;
 
     case 2:
     pintarNivel(niveles[2]) 
     sigNiv(4,12)
     antNiv(3,-1)
+
+    imageMode(CORNER);
+    image(backg3, 0, 0, 1200, 700);
+
     imageMode(CENTER);
     armas3Up.show();
     armas3Up.shootDown(proyectilIMG);
     armas1Up.show();
     armas1Up.shootDown(proyectilIMG);
-    armas2Up.show();
-    armas2Up.shootDown(proyectilIMG);
+    //armas2Up.show();
+    //armas2Up.shootDown(proyectilIMG);
     armas3Down.show();
     armas3Down.shootUp(proyectilIMG);
     armas1Down.show();
@@ -206,6 +235,9 @@ function draw() {
     pintarNivel(niveles[3]) 
     sigNiv(4,12)
     antNiv(4,-1)
+
+    imageMode(CORNER);
+        image(backg4, 0, 0, 1200, 700);
     
     if (deLlaves[3] == false){
       llave.recogerLlave(1);
@@ -227,6 +259,7 @@ function draw() {
     armas4Down.shootUp(proyectilIMG);
     imageMode(CORNER);
 
+    enemigo5.show();
 
     break;
   }
