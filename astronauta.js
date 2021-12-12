@@ -7,13 +7,8 @@ class Astronauta{
         this.inventario =[];
         this.card = false;
     }
-    pintarAstronauta(cambiarColor){
-        this.cambiarColor=true
-        if (cambiarColor) {
-            fill(255,0,0);
-        } else if (cambiarColor ==false) {
-            fill (0);
-        }
+    pintarAstronauta(){
+        fill(255,0,0)
         circle(this.x,this.y,70);
     }
     move(nivel) {

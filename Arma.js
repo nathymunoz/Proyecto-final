@@ -7,8 +7,10 @@ class Armas {
     
     show() {
 
-        fill(0);
+        fill(255);
+        noStroke();
         circle(this.x,this.y,0.1);
+        
     }
     shootDown(image) {
         

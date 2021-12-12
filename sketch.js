@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=2; 
+let nivelActual=0; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -60,11 +60,11 @@ let extintor = new Extintor();
 let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles);
 let armas1Up= new Armas (50 + 100 * 7,50 + 100 * 0,proyectiles);
 let armas2Up= new Armas (50 + 100 * 10,50 + 100 * 0,proyectiles);
-let armas4Up= new Armas (50 + 100 * 5,50 + 100 * 0,proyectiles);
+let armas4Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles);
 let armas1Down = new Armas (50 + 100 * 3,50 + 100 * 6,proyectiles);
 let armas2Down = new Armas (50 + 100 * 6,50 + 100 * 6,proyectiles);
 let armas3Down = new Armas (50 + 100 * 9,50 + 100 * 6,proyectiles);
-let armas4Down = new Armas (50 + 100 * 7,50 + 100 * 6,proyectiles);
+let armas4Down = new Armas (50 + 100 * 6,50 + 100 * 6,proyectiles);
 let tuerca = new Tuercas();
 let cuentaDeTuercas =0;
 
@@ -263,7 +263,7 @@ function draw() {
 
     break;
   }
-  astronauta.pintarAstronauta(Ax,Ay,cambioArma);
+  astronauta.pintarAstronauta(Ax,Ay);
   
   if(nivelActual == 0){
     extintor.pintarSuelo(Ex,Ey);
@@ -321,7 +321,7 @@ function antNiv(filaAnt,colAnt){
 
 function keyPressed(){
   astronauta.move(niveles [nivelActual])
-  extintor.cambiarAlcanze()
+  
   
 }
 function validarLlave(llaveFila,llaveCol){
