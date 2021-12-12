@@ -34,16 +34,23 @@ class Armas {
        
 
     }
-    shootUp() {
-        
-        this.proyectiles.push(new BalasArriva(this.x, this.y, 5))
+    shootUp(image) {
+        if (frameCount % 70 == 0) {
+            this.proyectiles.push(new BalasAbajo(this.x, this.y,image))
 
+        }    
 
         for (let i = 0; i < proyectiles.length; i++) {
-            this.proyectiles[i].show()
-            this.proyectiles[i].move()
+           
+            this.proyectiles[i].show ();
+            this.proyectiles[i].moveUp ();
+            if (this.proyectiles[i].y >700) {
+                console.log(proyectiles.length);
+            this.removeItemFromArr(this.proyectiles, this.proyectiles[i]);
+            console.log(proyectiles.length);
+            }
+            
         }
-        
 
     }
 

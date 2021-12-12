@@ -39,6 +39,8 @@ let nivel4 = [
 ];
 
 let nivelActual=2; 
+
+
 let niveles = [nivel1, nivel2, nivel3, nivel4];
 let Ax =0;
 let Ay =0;
@@ -65,6 +67,11 @@ let proyectilIMG;
 let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
 let extintor = new Extintor();
 let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles);
+let armas1Up= new Armas (50 + 100 * 7,50 + 100 * 0,proyectiles);
+let armas2Up= new Armas (50 + 100 * 10,50 + 100 * 0,proyectiles);
+let armas1Down = new Armas (50 + 100 * 3,50 + 100 * 6,proyectiles);
+let armas2Down = new Armas (50 + 100 * 6,50 + 100 * 6,proyectiles);
+let armas3Down = new Armas (50 + 100 * 9,50 + 100 * 6,proyectiles);
 let engranaje1 = new Tuercas (50 + 100 * 5,50 + 100 * 5);
 let engranaje2 = new Tuercas (50 + 100 * 1,50 + 100 * 5);
 let engranaje3 = new Tuercas (50 + 100 * 4,50 + 100 * 3);
@@ -142,9 +149,21 @@ function draw() {
     pintarNivel(niveles[2]) 
     sigNiv(4,12)
     antNiv(3,-1)
+    imageMode(CENTER);
     armas3Up.show();
     armas3Up.shootDown(proyectilIMG);
+    armas1Up.show();
+    armas1Up.shootDown(proyectilIMG);
+    armas2Up.show();
+    armas2Up.shootDown(proyectilIMG);
+    armas3Down.show();
+    armas3Down.shootUp(proyectilIMG);
+    armas1Down.show();
+    armas1Down.shootUp(proyectilIMG);
+    armas2Down.show();
+    armas2Down.shootUp(proyectilIMG);
     engranaje3.show();
+    imageMode(CORNER);
     if (deLlaves[2] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 1,50 + 100 * 5);

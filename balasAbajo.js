@@ -15,4 +15,8 @@ class BalasAbajo {
         this.y+=4.5;
     }
 
+    moveUp () {
+        this.y-=4.5;
+    }
+
 }
