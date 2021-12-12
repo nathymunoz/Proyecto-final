@@ -69,9 +69,11 @@ let extintor = new Extintor();
 let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles);
 let armas1Up= new Armas (50 + 100 * 7,50 + 100 * 0,proyectiles);
 let armas2Up= new Armas (50 + 100 * 10,50 + 100 * 0,proyectiles);
+let armas4Up= new Armas (50 + 100 * 5,50 + 100 * 0,proyectiles);
 let armas1Down = new Armas (50 + 100 * 3,50 + 100 * 6,proyectiles);
 let armas2Down = new Armas (50 + 100 * 6,50 + 100 * 6,proyectiles);
 let armas3Down = new Armas (50 + 100 * 9,50 + 100 * 6,proyectiles);
+let armas4Down = new Armas (50 + 100 * 7,50 + 100 * 6,proyectiles);
 let tuerca = new Tuercas();
 let cuentaDeTuercas =0;
 
@@ -136,7 +138,6 @@ function draw() {
     }
       
       
-      console.log(cuentaDeTuercas);
     if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
       tuerca.showTuerca(50 + 100 * 5,50 + 100 * 5,tuercaAfuera)
@@ -161,10 +162,13 @@ function draw() {
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 10,50 + 100 * 2);
     }
-    if (cuentaDeTuercas == nivelActual){
+    if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 1,50 + 100 * 5,tuercaAfuera)
+      tuerca.showTuerca(50 + 100 * 1,50 + 100 * 5)
+    }else {
+      tuerca.recogerTuerca(2);
     }
+    validarTuerca(5,1);
     
     validarLlave(2,10);
 
@@ -192,10 +196,13 @@ function draw() {
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 1,50 + 100 * 5);
     }
-    if (cuentaDeTuercas == nivelActual){
+    if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 3,50 + 100 * 3,tuercaAfuera)
+      tuerca.showTuerca(50 + 100 * 3,50 + 100 * 3)
+    }else {
+      tuerca.recogerTuerca(2);
     }
+    validarTuerca(3,3);
     
     validarLlave(5,1);
     
@@ -210,12 +217,21 @@ function draw() {
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 8,50 + 100 * 5);
     }
-    if (cuentaDeTuercas == nivelActual){
+    if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 10,50 + 100 * 1,tuercaAfuera)
+      tuerca.showTuerca(50 + 100 * 10,50 + 100 * 1)
+    }else {
+      tuerca.recogerTuerca(2);
     }
+    validarTuerca(1,10);
     
     validarLlave(5,8);
+    armas4Up.show();
+    armas4Up.shootDown(proyectilIMG);
+    armas4Down.show();
+    armas4Down.shootUp(proyectilIMG);
+
+
     break;
   }
   astronauta.pintarAstronauta(Ax,Ay,cambioArma);
@@ -294,6 +310,7 @@ function validarTuerca(tuercaFila,tuercaCol){
     
     tuerca.recogerTuerca(2);
     cuentaDeTuercas=nivelActual+1;
+    console.log(cuentaDeTuercas);
 
   }
 }
