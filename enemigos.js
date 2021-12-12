@@ -1,14 +1,16 @@
-class Enemigos {
-    constructor(x, y, fila, columna, mat, puntos = 100) {
+class Enemigo1 {
+    constructor(x, y, fila, columna, mat) {
       this.x = x;
       this.y = y;
       this.fila = fila;
       this.columna = columna;
       this.mat = mat;
+      //this.image = image;
     }
   
     show() {
       fill(255, 0, 0);
+      //image(this.image,this.x,this.y);
       rect(this.x, this.y, 40, 40);
     }
   
@@ -24,7 +26,7 @@ class Enemigos {
       return this.puntos;
     }
   
-    move(mat) {
+    moveEne(mat) {
       let dir = parseInt(random(4));
       switch (dir) {
         case 0:

@@ -84,7 +84,8 @@ let Ey =450;
 let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
-let enemigos = [];
+let enemigo1 = new Enemigo1 (830, 130, 9, 2, nivel1);
+let enemigo1Img;
 
 
 
@@ -93,7 +94,9 @@ function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
-  tuercaAfuera = loadImage ("/Images/tuercacolect.png")
+  tuercaAfuera = loadImage ("/Images/tuerca.png");
+  enemigo1IMG = loadImage ("./Images/enemigo1.png");
+
   
   switch (nivelActual) {
     case 0:
@@ -144,12 +147,15 @@ function draw() {
     validarTuerca(5,5);
     
     validarLlave(1,10);
+    enemigo1.show();
+    //enemigo1.moveEne(mat);
     break;
 
     case 1:
     pintarNivel(niveles[1])
     sigNiv(3,12)
     antNiv(2,-1)
+
     
     if (deLlaves[1] == false){
       llave.recogerLlave(1);
