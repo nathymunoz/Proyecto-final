@@ -50,17 +50,7 @@ let posFinalX =[11,11,11,11];
 let posFinalY =[2,3,4,3,4,5];
 let proyectiles = [];
 let armas = [];
-let posAX = [
-  //arriva
-  [4,7,10], //0
-  [5] //1
-  //abajo
-  [3,6,9], //2
-  [7] //3 
-];
-let posAY = [
-  [0,6]
-];
+
 
 let proyectilIMG;
 
@@ -86,6 +76,7 @@ let Ey =450;
 let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
+let enemigos = [];
 let enemigo1 = new Enemigo1 (830, 130, 9, 2, nivel1);
 let enemigo1Img;
 
@@ -96,10 +87,10 @@ function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
+  tuercaAfuera = loadImage ("/Images/tuercacolect.png")
   tuercaAfuera = loadImage ("/Images/tuerca.png");
   enemigo1IMG = loadImage ("./Images/enemigo1.png");
 
-  
   switch (nivelActual) {
     case 0:
     Ax=posIniX[0]*100+50;
@@ -148,6 +139,7 @@ function draw() {
     validarTuerca(5,5);
     
     validarLlave(1,10);
+
     enemigo1.show();
     //enemigo1.moveEne(mat);
     break;
@@ -156,7 +148,7 @@ function draw() {
     pintarNivel(niveles[1])
     sigNiv(3,12)
     antNiv(2,-1)
-
+    
     
     if (deLlaves[1] == false){
       llave.recogerLlave(1);
@@ -226,10 +218,12 @@ function draw() {
     validarTuerca(1,10);
     
     validarLlave(5,8);
+    imageMode(CENTER);
     armas4Up.show();
     armas4Up.shootDown(proyectilIMG);
     armas4Down.show();
     armas4Down.shootUp(proyectilIMG);
+    imageMode(CORNER);
 
 
     break;
@@ -311,6 +305,13 @@ function validarTuerca(tuercaFila,tuercaCol){
     tuerca.recogerTuerca(2);
     cuentaDeTuercas=nivelActual+1;
     console.log(cuentaDeTuercas);
+
+  }
+}
+
+function validateImpact(){
+  if (dist(astronauta.getX,astronauta.getY,proyectiles.x,proyectiles.y)<35) {
+
 
   }
 }
