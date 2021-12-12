@@ -110,8 +110,6 @@ function setup() {
 function draw() {
   background (backg1);
 
-  proyectiles.push(new Proyectiles(50 + 100 * 4,50, proyectilIMG));
-  
   switch (nivelActual) {
     case 0:
     pintarNivel(niveles[0]) 
