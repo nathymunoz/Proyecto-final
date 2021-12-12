@@ -10,11 +10,11 @@ class Armas {
         fill(0);
         circle(this.x,this.y,25);
     }
-    shootDown() {
+    shootDown(image) {
         
         
-        if (frameCount % 60 == 0) {
-            this.proyectiles.push(new BalasAbajo(this.x, this.y, 10))
+        if (frameCount % 70 == 0) {
+            this.proyectiles.push(new BalasAbajo(this.x, this.y,image))
 
         }    
 
@@ -23,11 +23,13 @@ class Armas {
             this.proyectiles[i].show ();
             this.proyectiles[i].moveProyectiles ();
             if (this.proyectiles[i].y >700) {
-            this.removeItemFromArr(this.proyectiles,i);
+                console.log(proyectiles.length);
+            this.removeItemFromArr(this.proyectiles, this.proyectiles[i]);
+            console.log(proyectiles.length);
             }
             
         }
-        console.log(proyectiles.length);
+        
         
        
 

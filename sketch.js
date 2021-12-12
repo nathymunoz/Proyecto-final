@@ -143,7 +143,7 @@ function draw() {
     sigNiv(4,12)
     antNiv(3,-1)
     armas3Up.show();
-    armas3Up.shootDown();
+    armas3Up.shootDown(proyectilIMG);
     engranaje3.show();
     if (deLlaves[2] == false){
       llave.recogerLlave(1);
