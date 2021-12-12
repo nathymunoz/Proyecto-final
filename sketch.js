@@ -89,6 +89,7 @@ function setup() {
   createCanvas(1200, 700);
   backg1 = loadImage("./Images/mapa1.jpg");
   proyectilIMG = loadImage ("/Images/bala.png");
+  tuercaAfuera = loadImage ("/Images/tuercacolect.png")
   
   switch (nivelActual) {
     case 0:
@@ -126,12 +127,17 @@ function draw() {
       llave.showLlave(50 + 100 * 10,50 + 100 * 1);
 
     }
-
-      tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 5,50 + 100 * 5)
-    if (cuentaDeTuercas === nivelActual){
       
+      
+      console.log(cuentaDeTuercas);
+    if (cuentaDeTuercas === nivelActual){
+      tuerca.recogerTuerca(1);
+      tuerca.showTuerca(50 + 100 * 5,50 + 100 * 5,tuercaAfuera)
+      
+    } else {
+      tuerca.recogerTuerca(2);
     }
+    validarTuerca(5,5);
     
     validarLlave(1,10);
     break;
@@ -147,7 +153,7 @@ function draw() {
     }
     if (cuentaDeTuercas == nivelActual){
       tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 1,50 + 100 * 5)
+      tuerca.showTuerca(50 + 100 * 1,50 + 100 * 5,tuercaAfuera)
     }
     
     validarLlave(2,10);
@@ -178,7 +184,7 @@ function draw() {
     }
     if (cuentaDeTuercas == nivelActual){
       tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 3,50 + 100 * 3)
+      tuerca.showTuerca(50 + 100 * 3,50 + 100 * 3,tuercaAfuera)
     }
     
     validarLlave(5,1);
@@ -196,7 +202,7 @@ function draw() {
     }
     if (cuentaDeTuercas == nivelActual){
       tuerca.recogerTuerca(1);
-      tuerca.showTuerca(50 + 100 * 10,50 + 100 * 1)
+      tuerca.showTuerca(50 + 100 * 10,50 + 100 * 1,tuercaAfuera)
     }
     
     validarLlave(5,8);
