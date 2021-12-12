@@ -23,9 +23,7 @@ class Armas {
             this.proyectiles[i].show ();
             this.proyectiles[i].moveProyectiles ();
             if (this.proyectiles[i].y >700) {
-                console.log(proyectiles.length);
-            this.removeItemFromArr(this.proyectiles, this.proyectiles[i]);
-            console.log(proyectiles.length);
+                this.removeItemFromArr(this.proyectiles, this.proyectiles[i]);
             }
             
         }
@@ -36,18 +34,18 @@ class Armas {
     }
     shootUp(image) {
         if (frameCount % 70 == 0) {
-            this.proyectiles.push(new BalasAbajo(this.x, this.y,image))
+            this.proyectiles.push(new PruebaBalas(this.x, this.y,image))
 
         }    
 
         for (let i = 0; i < proyectiles.length; i++) {
            
             this.proyectiles[i].show ();
-            this.proyectiles[i].moveUp ();
+            this.proyectiles[i].moverse ();
             if (this.proyectiles[i].y >700) {
-                console.log(proyectiles.length);
+                console.log(this.proyectiles.length);
             this.removeItemFromArr(this.proyectiles, this.proyectiles[i]);
-            console.log(proyectiles.length);
+            
             }
             
         }

@@ -1,4 +1,4 @@
-class DispararArriba{
+class PruebaBalas {
 
     constructor(x,y,image){
         this.x=x;
@@ -6,13 +6,13 @@ class DispararArriba{
         this.image=image;
         
     }
-    showUp () {
+    show () {
         fill(0);
         image(this.image,this.x,this.y);
-        //ellipse(this.x, this.y, 3, 3);
+      
     }
-    dipararUp () {
+    moverse () {
         this.y-=4.5;
     }
-    
+
 }

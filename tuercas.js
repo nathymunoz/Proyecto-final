@@ -1,13 +1,26 @@
 class Tuercas {
-    constructor(x,y){
-        this.x=x;
-        this.y=y;
+    constructor(){
+        this.key=1
     }
-    show(){
-        fill(255,0,255)
-        rectMode(CENTER);
-        rect(this.x,this.y,75)
-        rectMode(CORNER);
+    showTuerca(x,y){
+        switch (key) {
+            case 1:
+                fill(255,0,255)
+                rectMode(CENTER);
+                rect(x,y,75)
+                rectMode(CORNER);
+            
+                break;
+        
+            case 2:
 
+            
+                break;
+        }
+       
+    }
+    recogerTuerca(key){
+        this.key=key;
+    
     }
 }

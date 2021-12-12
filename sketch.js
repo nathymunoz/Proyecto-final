@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=2; 
+let nivelActual=0; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -72,10 +72,9 @@ let armas2Up= new Armas (50 + 100 * 10,50 + 100 * 0,proyectiles);
 let armas1Down = new Armas (50 + 100 * 3,50 + 100 * 6,proyectiles);
 let armas2Down = new Armas (50 + 100 * 6,50 + 100 * 6,proyectiles);
 let armas3Down = new Armas (50 + 100 * 9,50 + 100 * 6,proyectiles);
-let engranaje1 = new Tuercas (50 + 100 * 5,50 + 100 * 5);
-let engranaje2 = new Tuercas (50 + 100 * 1,50 + 100 * 5);
-let engranaje3 = new Tuercas (50 + 100 * 4,50 + 100 * 3);
-let engranaje4 = new Tuercas (50 + 100 * 10,50 + 100 * 1);
+let tuerca = new Tuercas();
+let cuentaDeTuercas =0;
+
 let llave = new Llave();
 let deLlaves = [false,false,false,false];
 
@@ -121,10 +120,17 @@ function draw() {
     case 0:
     pintarNivel(niveles[0]) 
     sigNiv(2,12)
-    engranaje1.show();
+    
     if (deLlaves[0] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 10,50 + 100 * 1);
+
+    }
+
+      tuerca.recogerTuerca(1);
+      tuerca.showTuerca(50 + 100 * 5,50 + 100 * 5)
+    if (cuentaDeTuercas === nivelActual){
+      
     }
     
     validarLlave(1,10);
@@ -134,11 +140,14 @@ function draw() {
     pintarNivel(niveles[1])
     sigNiv(3,12)
     antNiv(2,-1)
-    engranaje2.show();
-    console.log(deLlaves[1])
+    
     if (deLlaves[1] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 10,50 + 100 * 2);
+    }
+    if (cuentaDeTuercas == nivelActual){
+      tuerca.recogerTuerca(1);
+      tuerca.showTuerca(50 + 100 * 1,50 + 100 * 5)
     }
     
     validarLlave(2,10);
@@ -157,16 +166,19 @@ function draw() {
     armas2Up.show();
     armas2Up.shootDown(proyectilIMG);
     armas3Down.show();
-    armas3Down.shootUp(proyectilIMG);
+    //armas3Down.shootUp(proyectilIMG);
     armas1Down.show();
-    armas1Down.shootUp(proyectilIMG);
+    //armas1Down.shootUp(proyectilIMG);
     armas2Down.show();
-    armas2Down.shootUp(proyectilIMG);
-    engranaje3.show();
+    //armas2Down.shootUp(proyectilIMG);
     imageMode(CORNER);
     if (deLlaves[2] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 1,50 + 100 * 5);
+    }
+    if (cuentaDeTuercas == nivelActual){
+      tuerca.recogerTuerca(1);
+      tuerca.showTuerca(50 + 100 * 3,50 + 100 * 3)
     }
     
     validarLlave(5,1);
@@ -177,10 +189,14 @@ function draw() {
     pintarNivel(niveles[3]) 
     sigNiv(4,12)
     antNiv(4,-1)
-    engranaje4.show();
+    
     if (deLlaves[3] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 8,50 + 100 * 5);
+    }
+    if (cuentaDeTuercas == nivelActual){
+      tuerca.recogerTuerca(1);
+      tuerca.showTuerca(50 + 100 * 10,50 + 100 * 1)
     }
     
     validarLlave(5,8);
@@ -252,6 +268,16 @@ function validarLlave(llaveFila,llaveCol){
   if(astronauta.fila == llaveFila && astronauta.col == llaveCol){
     deLlaves[nivelActual] = true;
     llave.recogerLlave(2);
+
+  }
+}
+
+function validarTuerca(tuercaFila,tuercaCol){
+  
+  if(astronauta.fila == tuercaFila && astronauta.col == tuercaCol){
+    
+    tuerca.recogerTuerca(2);
+    cuentaDeTuercas++;
 
   }
 }
