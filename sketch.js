@@ -84,6 +84,10 @@ let Ey =450;
 let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
+let enemigos = [];
+
+
+
 
 function setup() {
   createCanvas(1200, 700);
