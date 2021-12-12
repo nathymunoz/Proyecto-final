@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=5; 
+let nivelActual=0; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -79,11 +79,11 @@ let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
 //enemigos
-let enemigo1 = new Enemigos (830, 130, 9, 2, nivel1);
-let enemigo2 = new Enemigos (630, 230, 7, 3, nivel2);
-let enemigo3 = new Enemigos (230, 530, 7, 3, nivel2);
-let enemigo4 = new Enemigos (1030, 430, 7, 3, nivel2);
-let enemigo5 = new Enemigos (1030, 430, 7, 3, nivel4);
+let enemigo1 = new Enemigos (830, 130, 10, 3, nivel1);
+let enemigo2 = new Enemigos (630, 230, 8, 4, nivel2);
+let enemigo3 = new Enemigos (230, 530, 8, 4, nivel2);
+let enemigo4 = new Enemigos (1030, 430, 8, 4, nivel2);
+let enemigo5 = new Enemigos (1030, 430, 8, 4, nivel4);
 
 let enemigosImg;
 
@@ -180,7 +180,7 @@ function draw() {
     image(luz2, 300, 400, 100, 100);
 
     enemigo1.show();
-    //enemigo1.move(mat);
+    enemigo1.move();
     break;
 
     case 1:
