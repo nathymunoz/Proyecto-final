@@ -1,4 +1,4 @@
-class Enemigo1 {
+class Enemigos {
     constructor(x, y, fila, columna, mat) {
       this.x = x;
       this.y = y;
@@ -25,8 +25,14 @@ class Enemigo1 {
     getPuntos() {
       return this.puntos;
     }
+
+    move (mat) {
+      if (frameCount % 10 == 0) {
+          this.moveEnemy(mat);
+      }
+    }
   
-    moveEne(mat) {
+    moveEnemy(mat) {
       let dir = parseInt(random(4));
       switch (dir) {
         case 0:
