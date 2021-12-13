@@ -188,7 +188,8 @@ function draw() {
     enemigo1.show();
     enemigo1.move();
 
-    
+    extintor.pintarExtiontor(Ex,Ey);
+    validarExtintor(3,4);
 
 
     break;
@@ -335,13 +336,6 @@ function draw() {
     
   }
   
-    
-  
-  
-  if(nivelActual == 0){
-    extintor.pintarSuelo(Ex,Ey);
-  }
-  
  //astronauta.addInventario();
  
 }
@@ -413,7 +407,16 @@ function validarTuerca(tuercaFila,tuercaCol){
     
     tuerca.recogerTuerca(2);
     cuentaDeTuercas=nivelActual+1;
-    console.log(cuentaDeTuercas);
+    
+
+  }
+}
+
+function validarExtintor(extintorFila,extintorCol){
+  
+  if(astronauta.fila == extintorFila && astronauta.col == extintorCol){
+    
+    extintor.recogerExtintor(2);
 
   }
 }

@@ -1,12 +1,26 @@
-class Extintor extends Astronauta{
-    constructor(x,y){
-        super(x,y);
-        this.cambio= true;
+class Extintor {
+    constructor() {
+        this.key= 1;
     }
-    pintarSuelo(x,y){
-        fill(255);
-        circle(x,y,20);
 
+    pintarExtiontor(x,y){
+    switch (key) {
+        case 1:
+            fill(255);
+            circle(x,y,20);
+            break;
+    
+            case 2:
+                fill(0);
+                circle(astronauta.x,astronauta.y,20);
+            
+                break;
+        }
+       
+    }
+
+    recogerExtintor(key){
+        this.key=key;
     }
     
 }
