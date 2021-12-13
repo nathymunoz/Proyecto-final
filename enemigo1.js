@@ -26,13 +26,13 @@ class Enemigos {
       return this.puntos;
     }
 
-    move (mat) {
+    move () {
       if (frameCount % 10 == 0) {
-          this.moveEnemy(mat);
+          this.moveEnemy();
       }
     }
   
-    moveEnemy(mat) {
+    moveEnemy() {
       let dir = parseInt(random(4));
       switch (dir) {
         case 0:

@@ -79,7 +79,7 @@ let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
 //enemigos
-let enemigo1 = new Enemigos (830, 130, 9, 2, nivel1);
+let enemigo1 = new Enemigos (830, 130, 1, 8, nivel1);
 let enemigo2 = new Enemigos (630, 230, 7, 3, nivel2);
 let enemigo3 = new Enemigos (230, 530, 7, 3, nivel2);
 let enemigo4 = new Enemigos (1030, 430, 7, 3, nivel2);
@@ -105,6 +105,7 @@ function setup() {
   backg2 = new loadImage("./Images/mapa2.jpg");
   backg3 = new loadImage("./Images/mapa3.jpg");
   backg4 = new loadImage("./Images/mapa4.jpg");
+  inicioPan = new loadImage("./Images/pantalla.jpg")
 
   //imagenes secundarias
   luz = new loadImage("./Images/luz.png")
@@ -180,7 +181,7 @@ function draw() {
     image(luz2, 300, 400, 100, 100);
 
     enemigo1.show();
-    //enemigo1.move(mat);
+    enemigo1.move();
     break;
 
     case 1:
@@ -311,14 +312,17 @@ function draw() {
     break;
 
     case 5:
-      fill(0,200,0);
-      rect(0,0,1200,700);
-      fill (0);
-      rect(900,500,200,100);
+      imageMode(CORNER);
+        image(inicioPan, 0, 0, 1200, 700);
+      noFill ();
+      noStroke ();
+      rect(943,565,203,80);
 
 
   }
-  astronauta.pintarAstronauta(Ax,Ay);
+  if(nivelActual>4){
+    astronauta.pintarAstronauta(Ax,Ay);
+  }
   
   if(nivelActual == 0){
     extintor.pintarSuelo(Ex,Ey);
@@ -404,4 +408,13 @@ function validateImpact(){
     console.log("hello");
 
   }
+}
+
+
+function mousePressed() {
+
+  if (mouseX >  943 && mouseX < 943+203 && mouseY > 565 && mouseY < 565+80){
+    nivelActual=0;
+  }
+
 }
