@@ -79,10 +79,10 @@ let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
 //enemigos
-let enemigo1 = new Enemigos (830, 130, 10, 3, nivel1);
-let enemigo2 = new Enemigos (630, 230, 8, 4, nivel2);
-let enemigo3 = new Enemigos (230, 530, 8, 4, nivel2);
-let enemigo4 = new Enemigos (1030, 430, 8, 4, nivel2);
+let enemigo1 = new Enemigos (830, 130, 1, 8, nivel1);
+let enemigo2 = new Enemigos (630, 230, 2, 6, nivel2);
+let enemigo3 = new Enemigos (230, 530, 2, 5, nivel2);
+let enemigo4 = new Enemigos (1030, 430, 2, 10, nivel2);
 let enemigo5 = new Enemigos (1030, 430, 8, 4, nivel4);
 
 let enemigosImg;

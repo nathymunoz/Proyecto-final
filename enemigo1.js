@@ -27,7 +27,7 @@ class Enemigos {
     }
 
     move () {
-      if (frameCount % 10 == 0) {
+      if (frameCount % 40 == 0) {
           this.moveEnemy();
       }
     }
