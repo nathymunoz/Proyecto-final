@@ -191,6 +191,7 @@ function draw() {
 
     extintor.pintarExtiontor(Ex,Ey);
     validarExtintor(4,3);
+    validarEnemigo();
 
 
     break;
@@ -442,6 +443,11 @@ function validateImpact(){
   }
 }
 
+function validarEnemigo() {
+  if (dist(astronauta.getX(), astronauta.getY(), enemigo1.x, enemigo1.y) < 50) {
+      console.log("XD")
+  }
+  }
 
 function mousePressed() {
 
