@@ -1,31 +1,22 @@
 class Fuego{
 
-constructor(image){
-    this.image=image;
-}
-
-showFuego(x,y){
-
-  
-    switch (key) {
-        case 1:
-            fill(255,255,0);
-            circle(x,y,80)
-            noFill();
-        
-            break;
+    constructor(x, y, fila, col) {
+        this.x = x;
+        this.y = y;
+        this.fila = fila;
+        this.col = col;
+        this.eliminado=true;
+        //this.image = image;
+      }
     
-        case 2:
-
-        
-            break;
-    }
-   
-}
-apagarFuego(key){
-    this.key=key;
-
-}
+      show() {
+        if (this.eliminado) {
+          fill(255, 0, 0);
+          //image(this.image,this.x,this.y);
+          rect(this.x, this.y, 40, 40);
+        }
+       
+      }
 
 
 }

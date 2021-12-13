@@ -27,9 +27,6 @@ class Enemigos {
       return this.y;
     }
   
-    getPuntos() {
-      return this.puntos;
-    }
 
     move () {
       if (frameCount % 40 == 0) {

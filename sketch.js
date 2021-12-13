@@ -88,6 +88,14 @@ let enemigo5 = new Enemigos (1030, 430, 4, 8, nivel4);
 
 let enemigosImg;
 
+//fuego
+let fuego1 =new Fuego (1050,250,10,2);
+let fuego2 = new Fuego (1050,350,10,4);
+let fuego3 = new Fuego (1050,450,10,5);
+let fuego4 = new Fuego (1050,550,10,6);
+
+
+
 //imagenes secundarias
 let luz;
 let luz2;
@@ -196,6 +204,9 @@ function draw() {
     validarExtintor(4,3);
     validarEnemigo(enemigo1);
     validateImpact(enemigo1);
+    fuego1.show();
+    validarFuego(fuego1);
+    validateApagarFuego(fuego1);
 
     break;
 
@@ -354,6 +365,15 @@ function draw() {
     validateImpact(enemigo5);
     extintor.pintarExtiontor(Ex,Ey);
     extintor.recogerExtintor(2);
+    fuego2.show();
+    fuego3.show();
+    fuego4.show();
+    validarFuego(fuego2);
+    validateApagarFuego(fuego2);
+    validarFuego(fuego3);
+    validateApagarFuego(fuego3);
+    validarFuego(fuego4);
+    validateApagarFuego(fuego4);
 
     break;
 
@@ -368,7 +388,6 @@ function draw() {
 
   if (nivelActual != 5) {
     astronauta.pintarAstronauta(Ax,Ay);
-    
   }
 }
 
@@ -438,13 +457,9 @@ function validarLlave(llaveFila,llaveCol){
 }
 
 function validarTuerca(tuercaFila,tuercaCol){
-  
-  if(astronauta.fila == tuercaFila && astronauta.col == tuercaCol){
-    
+  if(astronauta.fila == tuercaFila && astronauta.col == tuercaCol){ 
     tuerca.recogerTuerca(2);
     cuentaDeTuercas=nivelActual+1;
-    
-
   }
 }
 
@@ -463,6 +478,13 @@ function validateImpact(enemigo){
     enemigo.y=1200;
   }
 }
+function validateApagarFuego(fuego){
+  if (extintor.validarEspumita(fuego)) {
+    fuego.eliminado=false;
+    fuego.y=1200;
+  }
+}
+
 
 function validarEnemigo(enemigo) {
   if (dist(astronauta.getX(), astronauta.getY(), enemigo.x, enemigo.y) < 50) {
@@ -481,6 +503,16 @@ function validarProyectil(arma) {
       astronauta.col=posIniX[nivelActual];
   }
 }
+
+function validarFuego(fuego) {
+  if (dist(astronauta.getX(), astronauta.getY(), fuego.x, fuego.y) < 50) {
+      astronauta.x=posIniX[nivelActual]*100+50;
+      astronauta.y=posIniY[nivelActual]*100+50;
+      astronauta.fila=posIniY[nivelActual];
+      astronauta.col=posIniX[nivelActual];
+  }
+}
+
 function mousePressed() {
 
   if (mouseX >  943 && mouseX < 943+203 && mouseY > 565 && mouseY < 565+80 && nivelActual == 5){
