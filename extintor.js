@@ -13,7 +13,7 @@ class Extintor {
             break;
     
             case 2:
-                fill(0);
+                fill(255);
                 circle(astronauta.x,astronauta.y,90);
                 for (let i = 0; i < this.espumitas.length; i++) {         
                     this.espumitas[i].mostrarEspumita ();
@@ -49,6 +49,16 @@ class Extintor {
 
 
         }
+    }
+
+    validarEspumita(enemigo){
+        for (let i = 0; i < this.espumitas.length; i++) {         
+            if (dist(this.espumitas[i].x, this.espumitas[i].y, enemigo.x, enemigo.y) < 50) {
+                return true;
+            } 
+        }
+        
+
     }
 
     

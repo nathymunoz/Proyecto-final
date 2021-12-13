@@ -34,6 +34,14 @@ class Armas {
        
 
     }
+
+    validarImpactoProyectil(){
+        for (let i = 0; i < this.proyectiles.length; i++) {         
+            if (dist(this.proyectiles[i].x, this.proyectiles[i].y, astronauta.x, astronauta.y) < 50) {
+                return true;
+            } 
+        }
+    }
     shootUp(image) {
         
         

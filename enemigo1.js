@@ -5,13 +5,18 @@ class Enemigos {
       this.fila = fila;
       this.col = col;
       this.mat = mat;
+      this.eliminado=true;
       //this.image = image;
     }
   
     show() {
-      fill(255, 0, 0);
-      //image(this.image,this.x,this.y);
-      rect(this.x, this.y, 40, 40);
+      if (this.eliminado) {
+        fill(255, 0, 0);
+        //image(this.image,this.x,this.y);
+        rect(this.x, this.y, 40, 40);
+        
+      }
+     
     }
   
     getX() {

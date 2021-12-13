@@ -32,11 +32,7 @@ class Astronauta{
         }
     }
 
-    addInventario(){
-     this.inventario=[];
-
-
-    }
+    
 
     getX(){
         return this.x;

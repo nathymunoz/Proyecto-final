@@ -51,6 +51,7 @@ let posFinalY =[2,3,4,3,4,5];
 let proyectiles = [];
 let armas = [];
 let crearAstronauta = false;
+let enemigoEliminado = true;
 
 //armas
 let proyectilIMG;
@@ -83,7 +84,7 @@ let enemigo1 = new Enemigos (830, 130, 1, 8, nivel1);
 let enemigo2 = new Enemigos (630, 230, 2, 6, nivel2);
 let enemigo3 = new Enemigos (230, 530, 2, 5, nivel2);
 let enemigo4 = new Enemigos (1030, 430, 2, 10, nivel2);
-let enemigo5 = new Enemigos (1030, 430, 8, 4, nivel4);
+let enemigo5 = new Enemigos (1030, 430, 4, 8, nivel4);
 
 let enemigosImg;
 
@@ -96,6 +97,7 @@ let backg1;
 let backg2;
 let backg3;
 let backg4;
+let finalImg;
 
 
 function setup() {
@@ -106,6 +108,7 @@ function setup() {
   backg3 = new loadImage("./Images/mapa3.jpg");
   backg4 = new loadImage("./Images/mapa4.jpg");
   inicioPan = new loadImage("./Images/pantalla.jpg")
+  finalImg = new loadImage("./Images/final.jpg")
 
   //imagenes secundarias
   luz = new loadImage("./Images/luz.png")
@@ -115,7 +118,7 @@ function setup() {
   proyectilIMG = loadImage ("./Images/bala.png");
   tuercaAdentro = loadImage ("./Images/tuerca.png")
   tuercaAfuera = loadImage ("./Images/tuerca.png");
-  enemigosIMG = loadImage ("./Images/enemigo1.png");
+  enemigosImg = loadImage ("./Images/enemigo1.png");
 
 
   switch (nivelActual) {
@@ -142,7 +145,7 @@ function setup() {
 }
 
 function draw() {
-  background (backg1);
+  background (finalImg);
 
   switch (nivelActual) {
     case 0:
@@ -191,8 +194,8 @@ function draw() {
 
     extintor.pintarExtiontor(Ex,Ey);
     validarExtintor(4,3);
-    validarEnemigo();
-
+    validarEnemigo(enemigo1);
+    validateImpact(enemigo1);
 
     break;
 
@@ -229,9 +232,21 @@ function draw() {
     
     validarLlave(2,10);
 
+    
+
     enemigo2.show();
     enemigo3.show();
     enemigo4.show();
+    enemigo2.move();
+    enemigo3.move();
+    enemigo4.move();
+
+    validarEnemigo(enemigo2);
+    validarEnemigo(enemigo3);
+    validarEnemigo(enemigo4);
+    validateImpact(enemigo2);
+    validateImpact(enemigo3);
+    validateImpact(enemigo4);
     
     extintor.pintarExtiontor(Ex,Ey);
     extintor.recogerExtintor(2);
@@ -260,6 +275,13 @@ function draw() {
     armas2Down.show();
     armas2Down.shootUp(proyectilIMG);
     imageMode(CORNER);
+    validarProyectil(armas1Down);
+    validarProyectil(armas1Up);
+    validarProyectil(armas2Down);
+    validarProyectil(armas3Down);
+    validarProyectil(armas3Up);
+    
+    
     if (deLlaves[2] == false){
       llave.recogerLlave(1);
       llave.showLlave(50 + 100 * 1,50 + 100 * 5);
@@ -323,8 +345,13 @@ function draw() {
     armas4Down.show();
     armas4Down.shootUp(proyectilIMG);
     imageMode(CORNER);
+    validarProyectil(armas4Down);
+    validarProyectil(armas4Up);
 
     enemigo5.show();
+    enemigo5.move();
+    validarEnemigo(enemigo5);
+    validateImpact(enemigo5);
     extintor.pintarExtiontor(Ex,Ey);
     extintor.recogerExtintor(2);
 
@@ -336,17 +363,13 @@ function draw() {
       noFill ();
       noStroke ();
       rect(943,565,203,80);
-
-
+      break;
   }
 
   if (nivelActual != 5) {
     astronauta.pintarAstronauta(Ax,Ay);
     
   }
-  
- //astronauta.addInventario();
- 
 }
 
 function pintarNivel(nivel){
@@ -404,8 +427,6 @@ function keyPressed(){
     extintor.dispararExtintor();
    
   }
-
-
 }
 function validarLlave(llaveFila,llaveCol){
   
@@ -436,24 +457,34 @@ function validarExtintor(extintorFila,extintorCol){
   }
 }
 
-function validateImpact(){
-  if (dist(astronauta.getX,astronauta.getY,proyectiles.x,proyectiles.y)<35) {
-    console.log("hello");
-
+function validateImpact(enemigo){
+  if (extintor.validarEspumita(enemigo)) {
+    enemigo.eliminado=false;
+    enemigo.y=1200;
   }
 }
 
-function validarEnemigo() {
-  if (dist(astronauta.getX(), astronauta.getY(), enemigo1.x, enemigo1.y) < 50) {
-      console.log("XD")
+function validarEnemigo(enemigo) {
+  if (dist(astronauta.getX(), astronauta.getY(), enemigo.x, enemigo.y) < 50) {
+      astronauta.x=posIniX[nivelActual]*100+50;
+      astronauta.y=posIniY[nivelActual]*100+50;
+      astronauta.fila=posIniY[nivelActual];
+      astronauta.col=posIniX[nivelActual];
   }
-  }
+}
+function validarProyectil(arma) {
 
+  if (arma.validarImpactoProyectil()) {
+      astronauta.x=posIniX[nivelActual]*100+50;
+      astronauta.y=posIniY[nivelActual]*100+50;
+      astronauta.fila=posIniY[nivelActual];
+      astronauta.col=posIniX[nivelActual];
+  }
+}
 function mousePressed() {
 
   if (mouseX >  943 && mouseX < 943+203 && mouseY > 565 && mouseY < 565+80 && nivelActual == 5){
     nivelActual=nivelActual-5;
     crearAstronauta = true;
   }
-
 }
