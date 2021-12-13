@@ -6,7 +6,7 @@ class Espumita {
         
     }
     mostrarEspumita () {
-        fill(0);
+        fill(255);
         //image(this.image,this.x,this.y);
         circle(this.x, this.y, 30);
        

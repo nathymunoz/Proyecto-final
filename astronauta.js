@@ -9,7 +9,9 @@ class Astronauta{
     }
     pintarAstronauta(){
         fill(255,0,0)
-        circle(this.x,this.y,70);
+        imageMode(CENTER);
+        image(astronautaImg,this.x, this.y);
+        //circle(this.x,this.y,70);
     }
     move(nivel) {
         if((key == 'd' || key == 'D') && nivel[this.fila][this.col + 1] != 1) {

@@ -12,8 +12,9 @@ class Fuego{
       show() {
         if (this.eliminado) {
           fill(255, 0, 0);
-          //image(this.image,this.x,this.y);
-          rect(this.x, this.y, 40, 40);
+          imageMode(CENTER);
+        image(fuegoImg,this.x, this.y);
+          //rect(this.x, this.y, 40, 40);
         }
        
       }

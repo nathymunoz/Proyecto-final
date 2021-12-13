@@ -9,12 +9,16 @@ class Extintor {
     switch (this.key) {
         case 1:
             fill(255);
-            circle(x,y,20);
+            imageMode(CENTER);
+        image(extintorImg,x,y);
+            //circle(x,y,20);
             break;
     
             case 2:
                 fill(255);
-                circle(astronauta.x,astronauta.y,90);
+                imageMode(CENTER);
+        image(extintorImg,astronauta.x-25,astronauta.y);
+                //circle(astronauta.x,astronauta.y,90);
                 for (let i = 0; i < this.espumitas.length; i++) {         
                     this.espumitas[i].mostrarEspumita ();
                     this.espumitas[i].moverEspumita ();

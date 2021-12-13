@@ -9,11 +9,12 @@ class Enemigos {
       //this.image = image;
     }
   
-    show() {
+    show(imagesEnemy) {
       if (this.eliminado) {
         fill(255, 0, 0);
-        //image(this.image,this.x,this.y);
-        rect(this.x, this.y, 40, 40);
+        imageMode(CENTER);
+        image(imagesEnemy,this.x, this.y);
+        //rect(this.x, this.y, 40, 40);
         
       }
      

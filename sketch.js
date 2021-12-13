@@ -69,6 +69,10 @@ let armas4Down = new Armas (50 + 100 * 6,50 + 100 * 6,proyectiles);
 let tuerca = new Tuercas();
 let cuentaDeTuercas =0;
 
+let extintorImg;
+
+let astronautaImg;
+
 //coleccionables
 let llave = new Llave();
 let deLlaves = [false,false,false,false];
@@ -80,13 +84,14 @@ let cambioArma = true;
 let paraMove = niveles [nivelActual]
 
 //enemigos
-let enemigo1 = new Enemigos (830, 130, 1, 8, nivel1);
-let enemigo2 = new Enemigos (630, 230, 2, 6, nivel2);
-let enemigo3 = new Enemigos (230, 530, 2, 5, nivel2);
-let enemigo4 = new Enemigos (1030, 430, 2, 10, nivel2);
-let enemigo5 = new Enemigos (1030, 430, 4, 8, nivel4);
+let enemigo1 = new Enemigos (850, 150, 1, 8, nivel1);
+let enemigo2 = new Enemigos (650, 250, 2, 6, nivel2);
+let enemigo3 = new Enemigos (250, 550, 5, 2, nivel2);
+let enemigo4 = new Enemigos (1050, 450, 4, 10, nivel2);
+let enemigo5 = new Enemigos (950, 150, 1, 9, nivel4);
 
-let enemigosImg;
+let enemigo1Img;
+let enemigo2Img;
 
 //fuego
 let fuego1 =new Fuego (1050,250,10,2);
@@ -94,11 +99,14 @@ let fuego2 = new Fuego (1050,350,10,4);
 let fuego3 = new Fuego (1050,450,10,5);
 let fuego4 = new Fuego (1050,550,10,6);
 
-
+let fuegoImg;
 
 //imagenes secundarias
 let luz;
 let luz2;
+
+let llaveImg;
+let tuercaImg
 
 //imagenes de fondo
 let backg1;
@@ -122,11 +130,19 @@ function setup() {
   luz = new loadImage("./Images/luz.png")
   luz2 = new loadImage("./Images/luz2.png")
 
+  fuegoImg = loadImage("./Images/fuego.png");
 
   proyectilIMG = loadImage ("./Images/bala.png");
   tuercaAdentro = loadImage ("./Images/tuerca.png")
   tuercaAfuera = loadImage ("./Images/tuerca.png");
-  enemigosImg = loadImage ("./Images/enemigo1.png");
+  tuercaImg = loadImage ("./Images/tuerca.png");
+  llaveImg = loadImage ("./Images/tarjeta.png");
+  enemigo1Img = loadImage ("./Images/enemigo1.png");
+  enemigo2Img = loadImage ("./Images/enemigo2.png");
+
+  astronautaImg = loadImage ("./Images/astronauta.png");
+
+  extintorImg = loadImage ("./Images/extintor.png");
 
 
   switch (nivelActual) {
@@ -153,13 +169,14 @@ function setup() {
 }
 
 function draw() {
-  background (finalImg);
+  imageMode(CORNER);
+        image(finalImg, 0, 0, 1200, 700);
 
   switch (nivelActual) {
     case 0:
       
       if (crearAstronauta){
-        astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
+        astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 30 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
         crearAstronauta = false;
       } 
     pintarNivel(niveles[0]) 
@@ -197,7 +214,7 @@ function draw() {
     imageMode(CORNER);
     image(luz2, 300, 400, 100, 100);
 
-    enemigo1.show();
+    enemigo1.show(enemigo1Img);
     enemigo1.move();
 
     extintor.pintarExtiontor(Ex,Ey);
@@ -245,9 +262,9 @@ function draw() {
 
     
 
-    enemigo2.show();
-    enemigo3.show();
-    enemigo4.show();
+    enemigo2.show(enemigo1Img);
+    enemigo3.show(enemigo2Img);
+    enemigo4.show(enemigo2Img);
     enemigo2.move();
     enemigo3.move();
     enemigo4.move();
@@ -315,7 +332,6 @@ function draw() {
     
     validarLlave(5,1);
 
-    validateImpact();
     extintor.pintarExtiontor(Ex,Ey);
     extintor.recogerExtintor(2);
     
@@ -359,7 +375,7 @@ function draw() {
     validarProyectil(armas4Down);
     validarProyectil(armas4Up);
 
-    enemigo5.show();
+    enemigo5.show(enemigo1Img);
     enemigo5.move();
     validarEnemigo(enemigo5);
     validateImpact(enemigo5);
@@ -388,7 +404,7 @@ function draw() {
 
   if (nivelActual != 5) {
     astronauta.pintarAstronauta(Ax,Ay);
-  }
+  } 
 }
 
 function pintarNivel(nivel){
@@ -411,7 +427,7 @@ function sigNiv(filaGana,colGana){
     if(nivelActual < 3) {
       astronauta.x = 50 + 100 * posIniX[nivelActual + 1]
       astronauta.col = posIniX[nivelActual + 1]
-      astronauta.y = 50 + 100 * posIniY[nivelActual + 1]
+      astronauta.y = 30 + 100 * posIniY[nivelActual + 1]
       astronauta.fila = posIniY[nivelActual + 1]
     }
     nivelActual++;
@@ -419,7 +435,7 @@ function sigNiv(filaGana,colGana){
   } else if (astronauta.fila==filaGana && astronauta.col==colGana){
       astronauta.x = 50 + 100 * posFinalX[nivelActual]
       astronauta.col = posFinalX[nivelActual ]
-      astronauta.y = 50 + 100 * posFinalY[nivelActual]
+      astronauta.y = 30 + 100 * posFinalY[nivelActual]
       astronauta.fila = posFinalY[nivelActual]
 
   }
@@ -430,7 +446,7 @@ function antNiv(filaAnt,colAnt){
     if(nivelActual >1 || nivelActual < 4) {
       astronauta.x = 50 + 100 * posFinalX[nivelActual - 1];
       astronauta.col = posFinalX[nivelActual - 1];
-      astronauta.y = 50 + 100 * posFinalY[nivelActual - 1]
+      astronauta.y = 30 + 100 * posFinalY[nivelActual - 1]
       astronauta.fila = posFinalY[nivelActual - 1]
     }
     nivelActual--;
@@ -489,7 +505,7 @@ function validateApagarFuego(fuego){
 function validarEnemigo(enemigo) {
   if (dist(astronauta.getX(), astronauta.getY(), enemigo.x, enemigo.y) < 50) {
       astronauta.x=posIniX[nivelActual]*100+50;
-      astronauta.y=posIniY[nivelActual]*100+50;
+      astronauta.y=posIniY[nivelActual]*100+30;
       astronauta.fila=posIniY[nivelActual];
       astronauta.col=posIniX[nivelActual];
   }
@@ -498,7 +514,7 @@ function validarProyectil(arma) {
 
   if (arma.validarImpactoProyectil()) {
       astronauta.x=posIniX[nivelActual]*100+50;
-      astronauta.y=posIniY[nivelActual]*100+50;
+      astronauta.y=posIniY[nivelActual]*100+30;
       astronauta.fila=posIniY[nivelActual];
       astronauta.col=posIniX[nivelActual];
   }
@@ -507,7 +523,7 @@ function validarProyectil(arma) {
 function validarFuego(fuego) {
   if (dist(astronauta.getX(), astronauta.getY(), fuego.x, fuego.y) < 50) {
       astronauta.x=posIniX[nivelActual]*100+50;
-      astronauta.y=posIniY[nivelActual]*100+50;
+      astronauta.y=posIniY[nivelActual]*100+30;
       astronauta.fila=posIniY[nivelActual];
       astronauta.col=posIniX[nivelActual];
   }

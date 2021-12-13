@@ -1,16 +1,17 @@
 class Tuercas {
-    constructor(image){
+    constructor(){
         this.key=1
-        this.image=image;
+        
     }
-    showTuerca(x,y,image){
+    showTuerca(x,y){
         switch (this.key) {
             case 1:
                 fill(255,0,255)
-                rectMode(CENTER);
-                rect(x,y,75)
+                //rect(x,y,75)
+                imageMode(CENTER);
+        image(tuercaImg,x,y);
                 //image(this.image,x,y);
-                rectMode(CORNER);
+                
             
                 break;
         

@@ -7,10 +7,11 @@ class Llave {
     showLlave(x,y){
         switch (this.key) {
             case 1:
-                rectMode(CENTER);
                 fill(255,255,0);
-                rect(x,y,25);
-                rectMode(CORNER);
+                imageMode(CENTER);
+        image(llaveImg,x,y);
+                //rect(x,y,25);
+                
                 
                 break;
         
