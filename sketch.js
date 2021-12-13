@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=0; 
+let nivelActual=5; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -50,12 +50,12 @@ let posFinalX =[11,11,11,11];
 let posFinalY =[2,3,4,3,4,5];
 let proyectiles = [];
 let armas = [];
-
+let crearAstronauta = false;
 
 //armas
 let proyectilIMG;
 
-let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
+let astronauta;
 let extintor = new Extintor();
 let armas3Up= new Armas (50 + 100 * 4,50 + 100 * 0,proyectiles);
 let armas1Up= new Armas (50 + 100 * 7,50 + 100 * 0,proyectiles);
@@ -146,7 +146,12 @@ function draw() {
 
   switch (nivelActual) {
     case 0:
+      if (crearAstronauta){
+        astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
+        crearAstronauta = false;
+      } 
     pintarNivel(niveles[0]) 
+    
     sigNiv(2,12)
 
     imageMode(CORNER);
@@ -182,6 +187,10 @@ function draw() {
 
     enemigo1.show();
     enemigo1.move();
+
+    
+
+
     break;
 
     case 1:
@@ -320,15 +329,20 @@ function draw() {
 
 
   }
-  if(nivelActual>4){
+
+  if (nivelActual != 5) {
     astronauta.pintarAstronauta(Ax,Ay);
+    
   }
+  
+    
+  
   
   if(nivelActual == 0){
     extintor.pintarSuelo(Ex,Ey);
   }
   
- astronauta.addInventario();
+ //astronauta.addInventario();
  
 }
 
@@ -379,9 +393,10 @@ function antNiv(filaAnt,colAnt){
 }
 
 function keyPressed(){
+  if(nivelActual !=5){
   astronauta.move(niveles [nivelActual])
-  
-  
+  }
+
 }
 function validarLlave(llaveFila,llaveCol){
   
@@ -413,8 +428,9 @@ function validateImpact(){
 
 function mousePressed() {
 
-  if (mouseX >  943 && mouseX < 943+203 && mouseY > 565 && mouseY < 565+80){
-    nivelActual=0;
+  if (mouseX >  943 && mouseX < 943+203 && mouseY > 565 && mouseY < 565+80 && nivelActual == 5){
+    nivelActual=nivelActual-5;
+    crearAstronauta = true;
   }
 
 }

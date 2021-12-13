@@ -48,3 +48,5 @@ class Astronauta{
     
 
 }
+
+//let astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);

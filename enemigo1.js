@@ -34,9 +34,7 @@ class Enemigos {
   
     moveEnemy() {
       let dir = parseInt(random(4));
-      console.log(this.mat[this.fila])
-          console.log(this.mat)
-          console.log(this.col)
+      
       switch (dir) {
         case 0:
           if (this.col - 1 >= 0 && this.mat[this.fila][this.col - 1] === 0) {
