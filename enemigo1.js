@@ -1,9 +1,9 @@
 class Enemigos {
-    constructor(x, y, fila, columna, mat) {
+    constructor(x, y, fila, col, mat) {
       this.x = x;
       this.y = y;
       this.fila = fila;
-      this.columna = columna;
+      this.col = col;
       this.mat = mat;
       //this.image = image;
     }
@@ -27,13 +27,16 @@ class Enemigos {
     }
 
     move () {
-      if (frameCount % 10 == 0) {
+      if (frameCount % 40 == 0) {
           this.moveEnemy();
       }
     }
   
     moveEnemy() {
       let dir = parseInt(random(4));
+      console.log(this.mat[this.fila])
+          console.log(this.mat)
+          console.log(this.col)
       switch (dir) {
         case 0:
           if (this.col - 1 >= 0 && this.mat[this.fila][this.col - 1] === 0) {
@@ -54,7 +57,8 @@ class Enemigos {
           }
           break;
         case 3:
-          if (this.fila + 1 < this.mat[0].length && this.mat[this.fila + 1][this.col] === 0) {
+          
+          if (this.fila + 1 < this.mat[0].length && this.mat[this.fila + 1][this.col] == 0) {
             this.y += 100;
             this.fila++;
           }

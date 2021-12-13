@@ -38,7 +38,7 @@ let nivel4 = [
   [1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
-let nivelActual=5; 
+let nivelActual=0; 
 
 
 let niveles = [nivel1, nivel2, nivel3, nivel4];
@@ -80,10 +80,10 @@ let paraMove = niveles [nivelActual]
 
 //enemigos
 let enemigo1 = new Enemigos (830, 130, 1, 8, nivel1);
-let enemigo2 = new Enemigos (630, 230, 7, 3, nivel2);
-let enemigo3 = new Enemigos (230, 530, 7, 3, nivel2);
-let enemigo4 = new Enemigos (1030, 430, 7, 3, nivel2);
-let enemigo5 = new Enemigos (1030, 430, 7, 3, nivel4);
+let enemigo2 = new Enemigos (630, 230, 2, 6, nivel2);
+let enemigo3 = new Enemigos (230, 530, 2, 5, nivel2);
+let enemigo4 = new Enemigos (1030, 430, 2, 10, nivel2);
+let enemigo5 = new Enemigos (1030, 430, 8, 4, nivel4);
 
 let enemigosImg;
 
