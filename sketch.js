@@ -146,6 +146,7 @@ function draw() {
 
   switch (nivelActual) {
     case 0:
+      
       if (crearAstronauta){
         astronauta = new Astronauta(50 + 100 * posIniX[nivelActual], 50 + 100 * posIniY[nivelActual], posIniY[nivelActual], posIniX[nivelActual]);
         crearAstronauta = false;
@@ -166,7 +167,7 @@ function draw() {
       image(luz, 1000, 100, 100, 100);
 
     }
-      
+    
       
     if (cuentaDeTuercas === nivelActual){
       tuerca.recogerTuerca(1);
@@ -189,7 +190,7 @@ function draw() {
     enemigo1.move();
 
     extintor.pintarExtiontor(Ex,Ey);
-    validarExtintor(3,4);
+    validarExtintor(4,3);
 
 
     break;
@@ -230,6 +231,9 @@ function draw() {
     enemigo2.show();
     enemigo3.show();
     enemigo4.show();
+    
+    extintor.pintarExtiontor(Ex,Ey);
+    extintor.recogerExtintor(2);
 
     break;
 
@@ -278,6 +282,8 @@ function draw() {
     validarLlave(5,1);
 
     validateImpact();
+    extintor.pintarExtiontor(Ex,Ey);
+    extintor.recogerExtintor(2);
     
     break;
 
@@ -318,6 +324,8 @@ function draw() {
     imageMode(CORNER);
 
     enemigo5.show();
+    extintor.pintarExtiontor(Ex,Ey);
+    extintor.recogerExtintor(2);
 
     break;
 
@@ -389,7 +397,13 @@ function antNiv(filaAnt,colAnt){
 function keyPressed(){
   if(nivelActual !=5){
   astronauta.move(niveles [nivelActual])
+
   }
+  if(nivelActual !=5 && key == 'e'){
+    extintor.dispararExtintor();
+   
+  }
+
 
 }
 function validarLlave(llaveFila,llaveCol){
@@ -413,11 +427,11 @@ function validarTuerca(tuercaFila,tuercaCol){
 }
 
 function validarExtintor(extintorFila,extintorCol){
-  
+
   if(astronauta.fila == extintorFila && astronauta.col == extintorCol){
     
     extintor.recogerExtintor(2);
-
+   
   }
 }
 
